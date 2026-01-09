@@ -1,0 +1,19 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<BorlandProject>
+	<Transactions>
+    <Transaction>2026/01/06 19:50:46.000.269,=C:\Users\vinid\OneDrive\Documentos\Embarcadero\Studio\Projects\Unit1.pas</Transaction>
+    <Transaction>2026/01/06 19:56:29.000.216,C:\Users\vinid\OneDrive\Desktop\[ DELPHI ]\[ AGENDA ]\src\view\FAgenda.pas=C:\Users\vinid\OneDrive\Documentos\Embarcadero\Studio\Projects\Unit1.pas</Transaction>
+    <Transaction>2026/01/06 19:56:29.000.216,C:\Users\vinid\OneDrive\Desktop\[ DELPHI ]\[ AGENDA ]\src\view\FAgenda.dfm=C:\Users\vinid\OneDrive\Documentos\Embarcadero\Studio\Projects\Unit1.dfm</Transaction>
+    <Transaction>2026/01/06 19:56:38.000.627,=C:\Users\vinid\OneDrive\Documentos\Embarcadero\Studio\Projects\Unit1.pas</Transaction>
+    <Transaction>2026/01/06 20:04:03.000.033,=C:\Users\vinid\OneDrive\Documentos\Embarcadero\Studio\Projects\Unit2.pas</Transaction>
+    <Transaction>2026/01/06 20:21:57.000.106,C:\Users\vinid\OneDrive\Desktop\[ DELPHI ]\[ AGENDA ]\src\view\cadastro\FCadastroNovo.pas=C:\Users\vinid\OneDrive\Documentos\Embarcadero\Studio\Projects\Unit2.pas</Transaction>
+    <Transaction>2026/01/06 20:21:57.000.106,C:\Users\vinid\OneDrive\Desktop\[ DELPHI ]\[ AGENDA ]\src\view\cadastro\FCadastroNovo.dfm=C:\Users\vinid\OneDrive\Documentos\Embarcadero\Studio\Projects\Unit2.dfm</Transaction>
+    <Transaction>2026/01/06 20:22:18.000.505,C:\Users\vinid\OneDrive\Desktop\[ DELPHI ]\[ AGENDA ]\src\data\Database.pas=C:\Users\vinid\OneDrive\Documentos\Embarcadero\Studio\Projects\Unit1.pas</Transaction>
+    <Transaction>2026/01/06 20:22:18.000.505,C:\Users\vinid\OneDrive\Desktop\[ DELPHI ]\[ AGENDA ]\src\data\Database.dfm=C:\Users\vinid\OneDrive\Documentos\Embarcadero\Studio\Projects\Unit1.dfm</Transaction>
+    <Transaction>2026/01/06 20:39:45.000.558,C:\Users\vinid\OneDrive\Desktop\[ DELPHI ]\[ AGENDA ]\Project1.dproj=C:\Users\vinid\OneDrive\Documentos\Embarcadero\Studio\Projects\Project1.dproj</Transaction>
+    <Transaction>2026/01/07 19:26:08.000.550,=C:\Users\vinid\OneDrive\Desktop\[ DELPHI ]\[ AGENDA ]\Unit1.pas</Transaction>
+    <Transaction>2026/01/07 19:28:38.000.786,C:\Users\vinid\OneDrive\Desktop\[ DELPHI ]\[ AGENDA ]\Unit1.pas=C:\Users\vinid\OneDrive\Desktop\[ DELPHI ]\[ AGENDA ]\src\unit\UValidarCampos.pas</Transaction>
+    <Transaction>2026/01/08 20:28:39.000.318,=C:\Users\vinid\OneDrive\Desktop\[ DELPHI ]\[ AGENDA ]\Unit1.pas</Transaction>
+    <Transaction>2026/01/08 20:28:52.000.690,C:\Users\vinid\OneDrive\Desktop\[ DELPHI ]\[ AGENDA ]\Unit1.pas=C:\Users\vinid\OneDrive\Desktop\[ DELPHI ]\[ AGENDA ]\src\unit\UCalcular.pas</Transaction>
+  </Transactions>
+</BorlandProject>

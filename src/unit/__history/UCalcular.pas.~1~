@@ -1,0 +1,43 @@
+unit UCalcular;
+
+interface
+
+uses
+  System.Classes, Vcl.Controls, System.Math;
+
+procedure ResizeControls(
+  ParentCtrl: TWinControl;
+  BaseW, BaseH, NewW, NewH: Integer
+);
+
+implementation
+
+procedure ResizeControls(
+  ParentCtrl: TWinControl;
+  BaseW, BaseH, NewW, NewH: Integer
+);
+var
+  i: Integer;
+  C: TControl;
+  FW, FH: Double;
+begin
+  if (BaseW = 0) or (BaseH = 0) then Exit;
+
+  FW := NewW / BaseW;
+  FH := NewH / BaseH;
+
+  for i := 0 to ParentCtrl.ControlCount - 1 do
+  begin
+    C := ParentCtrl.Controls[i];
+
+    C.Left   := Round(C.Left   * FW);
+    C.Top    := Round(C.Top    * FH);
+    C.Width  := Round(C.Width  * FW);
+    C.Height := Round(C.Height * FH);
+
+    if C is TWinControl then
+      ResizeControls(TWinControl(C), BaseW, BaseH, NewW, NewH);
+  end;
+end;
+
+end.

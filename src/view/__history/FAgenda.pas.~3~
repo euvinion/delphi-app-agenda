@@ -1,0 +1,104 @@
+unit FAgenda;
+
+interface
+
+uses
+  Winapi.Windows, Winapi.Messages,
+  System.SysUtils, System.Variants, System.Classes,
+  Vcl.Graphics, Vcl.Controls, Vcl.Forms, Vcl.Dialogs,
+  Data.DB,
+  Vcl.StdCtrls, Vcl.Grids, Vcl.DBGrids, Vcl.ExtCtrls;
+
+type
+  TFrmAgenda = class(TForm)
+    Base: TPanel;
+    Grid: TDBGrid;
+    Memo: TMemo;
+    EditPesquisar: TEdit;
+    BtnClickPesquisar: TButton;
+    BtnClickNovo: TButton;
+    BtnClickEditar: TButton;
+    BtnClickFechar: TButton;
+    procedure FormCreate(Sender: TObject);
+    procedure FormShow(Sender: TObject);
+    procedure FormResize(Sender: TObject);
+    procedure BtnClickPesquisarClick(Sender: TObject);
+    procedure BtnClickNovoClick(Sender: TObject);
+    procedure BtnClickFecharClick(Sender: TObject);
+  private
+    FBaseW, FBaseH: Integer;
+
+  public
+    { Public declarations }
+    procedure AtualizarGrid;
+  end;
+
+var
+  FrmAgenda: TFrmAgenda;
+
+implementation
+
+{$R *.dfm}
+
+uses Database, FCadastroNovo, UCalcular;
+
+{ ===================== GRID ===================== }
+
+procedure TFrmAgenda.AtualizarGrid;
+begin
+  DM.QryAgenda.Close;
+  DM.QryAgenda.SQL.Clear;
+  DM.QryAgenda.SQL.Add('SELECT * FROM novos');
+  DM.QryAgenda.Open;
+end;
+
+{ ===================== EVENTOS ===================== }
+
+procedure TFrmAgenda.FormCreate(Sender: TObject);
+begin
+  FBaseW := Base.Width;
+  FBaseH := Base.Height;
+end;
+
+procedure TFrmAgenda.FormShow(Sender: TObject);
+begin
+  AtualizarGrid;
+end;
+
+procedure TFrmAgenda.FormResize(Sender: TObject);
+begin
+  UCalcular.ResizeControls(Base, FBaseW, FBaseH, Base.Width, Base.Height);
+end;
+
+procedure TFrmAgenda.BtnClickPesquisarClick(Sender: TObject);
+begin
+  DM.QryAgenda.Close;
+  DM.QryAgenda.SQL.Clear;
+
+  if Trim(EditPesquisar.Text) = '' then
+    DM.QryAgenda.SQL.Add('SELECT * FROM novos')
+  else
+  begin
+    DM.QryAgenda.SQL.Add('SELECT * FROM novos WHERE nome LIKE :nome');
+    DM.QryAgenda.ParamByName('nome').AsString := '%' + EditPesquisar.Text + '%';
+  end;
+
+  DM.QryAgenda.Open;
+end;
+
+procedure TFrmAgenda.BtnClickNovoClick(Sender: TObject);
+begin
+  if not Assigned(FrmNovo) then
+    FrmNovo := TFrmNovo.Create(Self);
+
+  FrmNovo.ShowModal;
+  AtualizarGrid;
+end;
+
+procedure TFrmAgenda.BtnClickFecharClick(Sender: TObject);
+begin
+  Close;
+end;
+
+end.
+

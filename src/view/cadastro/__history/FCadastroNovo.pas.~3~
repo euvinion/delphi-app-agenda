@@ -1,0 +1,76 @@
+unit FCadastroNovo;
+
+interface
+
+uses
+  Winapi.Windows, Winapi.Messages, System.SysUtils, System.Variants, System.Classes, Vcl.Graphics,
+  Vcl.Controls, Vcl.Forms, Vcl.Dialogs, Vcl.StdCtrls, Vcl.ExtCtrls, UValidarCampos, Database;
+
+type
+  TFrmNovo = class(TForm)
+    Base: TPanel;
+    EdtNome: TEdit;
+    EdtID: TEdit;
+    Label2: TLabel;
+    Label1: TLabel;
+    EdtTelefone: TEdit;
+    Label3: TLabel;
+    EdtEmail: TEdit;
+    Label4: TLabel;
+    Memo: TMemo;
+    Cancelar: TButton;
+    Salvar: TButton;
+    procedure SalvarClick(Sender: TObject);
+    procedure FormCreate(Sender: TObject);
+    procedure FormResize(Sender: TObject);
+
+  private
+    { Private declarations }
+     FBaseW, FBaseH: Integer;
+  public
+    { Public declarations }
+  end;
+
+var
+  FrmNovo: TFrmNovo;
+
+implementation
+
+{$R *.dfm}
+
+uses FAgenda, UCalcular;
+
+procedure TFrmNovo.FormCreate(Sender: TObject);
+begin
+  FBaseW := Base.Width;
+  FBaseH := Base.Height;
+end;
+
+procedure TFrmNovo.FormResize(Sender: TObject);
+begin
+  UCalcular.ResizeControls(Base, FBaseW, FBaseH, Base.Width, Base.Height);
+end;
+
+procedure TFrmNovo.SalvarClick(Sender: TObject);
+begin
+  if not CampoObrigatorio(EdtNome, 'Nome é obrigatório') then Exit;
+  if not CampoObrigatorio(EdtTelefone, 'Telefone é obrigatório') then Exit;
+  if not CampoObrigatorio(EdtEmail, 'Email é obrigatório') then Exit;
+
+  DM.QryCadastro.Close;
+  DM.QryCadastro.SQL.Clear;
+  DM.QryCadastro.SQL.Add('INSERT INTO novos (nome, telefone, email) VALUES (:nome, :telefone, :email)');
+  DM.QryCadastro.ParamByName('nome').AsString := EdtNome.Text;
+  DM.QryCadastro.ParamByName('telefone').AsString := EdtTelefone.Text;
+  DM.QryCadastro.ParamByName('email').AsString := EdtEmail.Text;
+
+  DM.QryCadastro.ExecSQL;
+  ShowMessage('Registro cadastrado com sucesso!');
+
+  if Assigned(FrmAgenda) then
+    FrmAgenda.AtualizarGrid;
+  Close;
+end;
+
+
+end.
